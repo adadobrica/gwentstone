@@ -26,19 +26,27 @@ public final class PlayerDeck {
     public ArrayList<Card> copyFromDecksAndShuffle(final ArrayList<CardInput> cardInput,
                                                    final ArrayList<Card> cardsArray,
                                                    final int shuffleSeed) {
-        for (int i = 0; i < cardInput.size(); i++) {
-            if (cardInput.get(i).getName().equals("Winterfell")) {
-                Winterfell envCard = new Winterfell(cardInput.get(i));
-                cardsArray.add(envCard);
-            } else if (cardInput.get(i).getName().equals("Heart Hound")) {
-                HeartHound envCard = new HeartHound(cardInput.get(i));
-                cardsArray.add(envCard);
-            } else if (cardInput.get(i).getName().equals("Firestorm")) {
-                FireStorm envCard = new FireStorm(cardInput.get(i));
-                cardsArray.add(envCard);
-            } else {
-                Card newCard = new Card(cardInput.get(i));
-                cardsArray.add(newCard);
+        for (CardInput input : cardInput) {
+            switch (input.getName()) {
+                case "Winterfell" -> {
+                    Winterfell envCard = new Winterfell(input);
+                    cardsArray.add(envCard);
+                    break;
+                }
+                case "Heart Hound" -> {
+                    HeartHound envCard = new HeartHound(input);
+                    cardsArray.add(envCard);
+                    break;
+                }
+                case "Firestorm" -> {
+                    FireStorm envCard = new FireStorm(input);
+                    cardsArray.add(envCard);
+                    break;
+                }
+                default -> {
+                    Card newCard = new Card(input);
+                    cardsArray.add(newCard);
+                }
             }
         }
         Collections.shuffle(cardsArray, new Random(shuffleSeed));
@@ -46,8 +54,8 @@ public final class PlayerDeck {
         this.playingCards.add(cardsArray.get(0));
         cardsArray.remove(0);
 
-        for (int i = 0; i < cardsArray.size(); i++) {
-            decksCopy.add(cardsArray.get(i));
+        for (Card card : cardsArray) {
+            decksCopy.add(card);
         }
 
         return cardsArray;
