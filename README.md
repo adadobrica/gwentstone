@@ -29,7 +29,7 @@
 ### Actions class:
 * Part of the "Start" package, it implements almost all the possible actions that a player can do in the game, or the debugging commands. 
 * Used a Singleton design pattern to have only one possible instance of this class.
-* To implement the debugging commands I used fields/methods from the StartRound class; these commands print a player's mana, whose turn it is, printing the cards from the game table etc.
+* To implement the debugging commands I used fields/methods from the StartRound class; these commands print a player's mana, whose turn it is, the cards from the game table etc.
 * The methods implemented in this class revolve around the possible actions a card can have in a turn: using its ability to affect a card (for Minion cards), attacking another card or affecting an entire row (for Environment cards)
 
 ### Errors class:
